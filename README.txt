@@ -1,0 +1,1 @@
+The Demos are a collection of JavaScript demos used for examples for blog posts found at http://kinderas.blogspot.com/
