@@ -1,0 +1,15 @@
+CACHE MANIFEST
+# Cache manifest version 1.0.3
+# If you change the version number in this comment,
+# the cache manifest is no longer byte-for-byte
+# identical.
+ 
+main.js
+elephant.jpg
+../defaultStyle.css
+ 
+NETWORK:
+# All URLs that start with the following lines
+# are whitelisted.
+
+http://web.kinderas.com/

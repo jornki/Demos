@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Canvas Worker</title>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="../defaultStyle.css" type="text/css" media="all">
+		<style type="text/css">
+			canvas{
+				position: absolute;
+				-webkit-box-shadow: 2px 2px 5px #000;
+				-webkit-transition: -webkit-transform 1s ease-in-out;
+			}
+			#app-settings{
+				position: fixed;
+				top: 0px;
+				left:5px;
+				right: 5px;
+				background: gray;
+				height: 30px;
+				padding-top: 15px;
+				-webkit-box-shadow: 0 2px 3px #000;
+			}
+			#image-holder{
+				margin-top: 50px;
+				margin-left: 5px;
+				width: 100%;
+				height: 100%;
+				position: relative;
+			}
+			button, input, span{
+				float: left;
+				margin-left: 5px;
+			}
+			.spacer{
+				widows: 10px;
+				height: 20px;
+				margin-left: 15px;
+				margin-right: 15px;
+				border-left: 1px solid black;
+			}
+		</style>
+	</head>
+	<body>
+		<script type="text/javascript" src="main.js"></script>
+		<section id="image-holder"></section>
+		<div id="app-settings">
+			<input id="slider" type="range" min="5" max="500" step="1" title="Images slider" value="5">
+			<span id="numImagesLabel">x images</span>
+			<input id="sliderWidth" type="range" min="50" max="300" step="1" title="Images width slider" value="100">
+			<span id="widthImagesLabel">x px</span>
+			<span class="spacer"></span>
+			<button id="random" value="Random">Randomize</button>
+			<span class="spacer"></span>
+			<button id="grayscale" value="Grayscale">Grayscale</button>
+			<button id="invert" value="Invert">Invert</button>
+			<input type="checkbox" id="ch_random" value="">
+			<span>Animate at the same time</span>
+		</div>
+		<footer>Related blog post: <a href="http://kinderas.blogspot.com/2011/06/html-5-web-workers-and-image-processing.html">HTML 5 Web Workers and image processing</a><a href="main.js">::JavaScript Source::</a></footer>
+	</body>
+</html>

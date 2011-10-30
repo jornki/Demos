@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Contenteditable - Demo</title>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="../defaultStyle.css" type="text/css" media="all">
+		<style type="text/css">
+			section#editbox{
+				width: 300px;
+				height: 400px;
+				margin: 20px;
+				border: 1px dotted black;
+				padding: 5px;
+				text-align: left;
+				-webkit-user-select: auto;
+			}
+			nav{
+				margin: 0 20px;
+			}
+			nav > button{
+				display: inline;
+				margin-right: 5px;
+				margin-top: 5px;
+			}
+		</style>
+		<script type="text/javascript" src="main.js"></script>
+	</head>
+	<body>
+		<nav><button id="bold" value="bold">Bold</button><button id="italic" value="italic">Italic</button></nav>
+		<section id="editbox" contenteditable="true">
+		This text can be edited simply by clicking and selecting it, just like in any text editor. Also try to make the text bold and italic by selecting it and using the buttons. If you make a change, try refreshing the browser.
+		</section>
+		<footer>Related blog post: <a href="http://kinderas.blogspot.com/2011/07/creating-simple-wysiwyg-editor-with.html">Creating a simple WYSIWYG editor with HTML and JavaScript</a><a href="main.js">::JavaScript Source::</a></footer>
+	</body>
+</html>

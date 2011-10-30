@@ -1,0 +1,28 @@
+@charset "utf-8";
+
+*{
+    -webkit-user-select: none;
+    margin:0;
+}
+section{
+	width: 100%;
+	text-align: center;
+	margin-top: 10px;
+}
+footer{
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	/*height: 20px;*/
+	background-color: #2b8bc7;
+	padding: 5px;
+	color: white;
+}
+footer a{
+	color: white;
+}
+footer a[href*='js']{
+	float: right;
+	padding-right: 10px;
+}
