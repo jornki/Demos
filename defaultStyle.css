@@ -22,7 +22,7 @@ footer{
 footer a{
 	color: white;
 }
-footer a[href*='js']{
+footer a:nth-child(2){
 	float: right;
 	padding-right: 10px;
 }
