@@ -56,6 +56,13 @@ class window.PlaceholderShiv
 		Get all the input elements on in the DOM
 		###
 		@inputElements = document.getElementsByTagName('input')
+
+		###
+		Do we have native placeholder support?
+		###
+		@nativeSupport = no
+		if @placeholderSupport
+			@nativeSupport = yes
 		
 		@setup()
 	
@@ -75,12 +82,15 @@ class window.PlaceholderShiv
 			
 			itemType = item.getAttribute('type').toLowerCase()
 			if itemType in @includeTypes
-				item.placeholderText = item.value
-				item.setAttribute('placeholder',item.placeholderText)
-				item.defaultColor = @getStyle item, 'color'
-				item.style.color = @placeholderColor
-				item.addEventListener('focus', @focusHandler, no)
-				item.addEventListener('blur', @blurHandler, no)
+				item.setAttribute('placeholder',item.value)
+				if not @nativeSupport
+					item.placeholderText = item.value
+					item.defaultColor = @getStyle item, 'color'
+					item.style.color = @placeholderColor
+					item.addEventListener('focus', @focusHandler, no)
+					item.addEventListener('blur', @blurHandler, no)
+				else
+					item.value = ""
 		return yes
 	
 	###
@@ -103,6 +113,12 @@ class window.PlaceholderShiv
 			item.style.color = @placeholderColor
 			item.value = item.placeholderText
 	
+	###
+	Method for checking for native placeholder support
+	###
+	placeholderSupport: () ->
+		("placeholder" in document.createElement("input"))
+
 	### 
 	Helper method to get the computed style 
 	###

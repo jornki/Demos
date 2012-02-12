@@ -66,6 +66,11 @@ default elements: ['text','email','tel','search','url']
       		Get all the input elements on in the DOM
       */
       this.inputElements = document.getElementsByTagName('input');
+      /*
+      		Do we have native placeholder support?
+      */
+      this.nativeSupport = false;
+      if (this.placeholderSupport) this.nativeSupport = true;
       this.setup();
     }
 
@@ -87,12 +92,16 @@ default elements: ['text','email','tel','search','url']
         if (!(item.value != null) || item.value === "") continue;
         itemType = item.getAttribute('type').toLowerCase();
         if (__indexOf.call(this.includeTypes, itemType) >= 0) {
-          item.placeholderText = item.value;
-          item.setAttribute('placeholder', item.placeholderText);
-          item.defaultColor = this.getStyle(item, 'color');
-          item.style.color = this.placeholderColor;
-          item.addEventListener('focus', this.focusHandler, false);
-          item.addEventListener('blur', this.blurHandler, false);
+          item.setAttribute('placeholder', item.value);
+          if (!this.nativeSupport) {
+            item.placeholderText = item.value;
+            item.defaultColor = this.getStyle(item, 'color');
+            item.style.color = this.placeholderColor;
+            item.addEventListener('focus', this.focusHandler, false);
+            item.addEventListener('blur', this.blurHandler, false);
+          } else {
+            item.value = "";
+          }
         }
       }
       return true;
@@ -124,6 +133,14 @@ default elements: ['text','email','tel','search','url']
         item.style.color = this.placeholderColor;
         return item.value = item.placeholderText;
       }
+    };
+
+    /*
+    	Method for checking for native placeholder support
+    */
+
+    PlaceholderShiv.prototype.placeholderSupport = function() {
+      return __indexOf.call(document.createElement("input"), "placeholder") >= 0;
     };
 
     /* 
