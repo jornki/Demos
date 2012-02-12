@@ -1,6 +1,9 @@
 ###
 ** PlaceholderShiv by Jørn Kinderås - 2012 **
 
+REQUIREMENTS:
+This class requires a browser supporting "addEventListener"
+
 DESCRIPTION:
 This class will scan the page for defined input elements
 like "text", "email" and so on, fetching their "value" attributes content, using
