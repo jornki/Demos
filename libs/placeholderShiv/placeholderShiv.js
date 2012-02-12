@@ -14,7 +14,7 @@ by setting and restoring the value of the elements on focus and blur.
 
 USAGE:
 1. Give the target input elements a value "<input type="text" value="[my placeholder text]" />"
-2. Initialize the scanner: 
+2. Initialize the shiv: 
 scanner = new PlaceholderShiv({placeholderColor:"#999",includeTypes:[...]})
 
 ARGUMENTS[optional]:
