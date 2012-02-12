@@ -8,33 +8,37 @@
 			*{
 				-webkit-user-select: auto;
 			}
-			p{
-				position: absolute;
-				top: 10px;
-				left: 10px;
+			#inputHolder{
 				width: 200px;
-				height: 30px;
-				text-align: center;
-				line-height: 30px;
-				background-color:black;
-				border-radius: 3px;
-				color: white;
+				margin: 20px auto 0 auto;
 			}
-			p.buttonDown{
-				background-color: red;
+			input{
+				display: block;
+				margin-bottom: 10px;
+			}
+			button{
+				margin-bottom: 5px;
 			}
 		</style>
 	</head>
 	<body>
-		<input type="email" value="Your e-mail" />
-		<input type="tel" value="Your phone" />
-		<input type="text" value="Your text" />
-		<input type="search" value="Your search" />
-		<input type="url" value="Your url" />
+		<div id="inputHolder">
+			<input type="email" value="Your e-mail" />
+			<input type="tel" value="Your phone" />
+			<input type="text" value="Your text" />
+			<input type="search" value="Your search" />
+			<input type="url" value="Your url" />
 
-		<footer>Related blog post: <a href="http://kinderas.blogspot.com/2011/04/scaling-and-rotating-elephant-using.html">Scaling and rotating an elephant using JavaScript</a><a href="main.js">::JavaScript Source::</a></footer>
+			<br />
+			<button id="jsShiv">JS/Coffeescript version</button>
+			<button id="jqShiv">jQuery version</button>
+			<div id="out"></div>
+		</div>
 
-		<script type="text/javascript" src="placeholderscanner.js"></script>
+		<footer>Related blog post: <a href="http://kinderas.blogspot.com/2011/04/scaling-and-rotating-elephant-using.html">Input placeholder text shiv</a><a href="main.js">::JavaScript Source::</a></footer>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+		<script type="text/javascript" src="../libs/placeholderShiv/placeholderShiv.js"></script>
+		<script type="text/javascript" src="../libs/placeholderShiv/placeholderShivJQP.js"></script>
 		<script type="text/javascript" src="main.js"></script>
 	</body>
 </html>

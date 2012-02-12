@@ -1,5 +1,5 @@
 ###
-** PlaceholderScanner by Jørn Kinderås - 2012 **
+** PlaceholderShiv by Jørn Kinderås - 2012 **
 
 DESCRIPTION:
 This class will scan the page for defined input elements
@@ -11,7 +11,7 @@ by setting and restoring the value of the elements on focus and blur.
 USAGE:
 1. Give the target input elements a value "<input type="text" value="[my placeholder text]" />"
 2. Initialize the scanner: 
-scanner = new PlaceholderScanner({placeholderColor:"#999",includeTypes:[...]})
+scanner = new PlaceholderShiv({placeholderColor:"#999",includeTypes:[...]})
 
 ARGUMENTS[optional]:
 * placeholderColor(color[string]) * 
@@ -23,7 +23,7 @@ An array of input elements e.g ['text','email']
 Note: Only specify this if you do not want the default set of elements.
 default elements: ['text','email','tel','search','url']
 ###
-class window.PlaceholderScanner
+class window.PlaceholderShiv
 	###
 	Construtor
 	###
@@ -63,6 +63,12 @@ class window.PlaceholderScanner
 	###
 	setup: () ->
 		for item in @inputElements
+			###
+			If the input has no value, ignore it
+			###
+			if not item.value? or item.value is ""
+				continue
+			
 			itemType = item.getAttribute('type').toLowerCase()
 			if itemType in @includeTypes
 				item.placeholderText = item.value

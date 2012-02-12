@@ -1,6 +1,6 @@
 
 /*
-** PlaceholderScanner by Jørn Kinderås - 2012 **
+** PlaceholderShiv by Jørn Kinderås - 2012 **
 
 DESCRIPTION:
 This class will scan the page for defined input elements
@@ -12,7 +12,7 @@ by setting and restoring the value of the elements on focus and blur.
 USAGE:
 1. Give the target input elements a value "<input type="text" value="[my placeholder text]" />"
 2. Initialize the scanner: 
-scanner = new PlaceholderScanner({placeholderColor:"#999",includeTypes:[...]})
+scanner = new PlaceholderShiv({placeholderColor:"#999",includeTypes:[...]})
 
 ARGUMENTS[optional]:
 * placeholderColor(color[string]) * 
@@ -29,11 +29,11 @@ default elements: ['text','email','tel','search','url']
   var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
     __indexOf = Array.prototype.indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
 
-  window.PlaceholderScanner = (function() {
+  window.PlaceholderShiv = (function() {
     /*
     	Construtor
     */
-    function PlaceholderScanner(args) {
+    function PlaceholderShiv(args) {
       this.blurHandler = __bind(this.blurHandler, this);
       this.focusHandler = __bind(this.focusHandler, this);
       /*
@@ -72,11 +72,15 @@ default elements: ['text','email','tel','search','url']
     	Add listeners
     */
 
-    PlaceholderScanner.prototype.setup = function() {
+    PlaceholderShiv.prototype.setup = function() {
       var item, itemType, _i, _len, _ref;
       _ref = this.inputElements;
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
         item = _ref[_i];
+        /*
+        			If the input has no value, ignore it
+        */
+        if (!(item.value != null) || item.value === "") continue;
         itemType = item.getAttribute('type').toLowerCase();
         if (__indexOf.call(this.includeTypes, itemType) >= 0) {
           item.placeholderText = item.value;
@@ -95,7 +99,7 @@ default elements: ['text','email','tel','search','url']
     	original color
     */
 
-    PlaceholderScanner.prototype.focusHandler = function(e) {
+    PlaceholderShiv.prototype.focusHandler = function(e) {
       var item;
       item = e.target;
       if (item.value === item.placeholderText) {
@@ -109,7 +113,7 @@ default elements: ['text','email','tel','search','url']
     	if the form value is empty and apply the placeholder color
     */
 
-    PlaceholderScanner.prototype.blurHandler = function(e) {
+    PlaceholderShiv.prototype.blurHandler = function(e) {
       var item;
       item = e.target;
       if (item.value === "") {
@@ -122,7 +126,7 @@ default elements: ['text','email','tel','search','url']
     	Helper method to get the computed style
     */
 
-    PlaceholderScanner.prototype.getStyle = function(oElm, strCssRule) {
+    PlaceholderShiv.prototype.getStyle = function(oElm, strCssRule) {
       var strValue;
       strValue = "";
       if (document.defaultView && document.defaultView.getComputedStyle) {
@@ -136,7 +140,7 @@ default elements: ['text','email','tel','search','url']
       return strValue;
     };
 
-    return PlaceholderScanner;
+    return PlaceholderShiv;
 
   })();
 
