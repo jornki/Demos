@@ -17,6 +17,10 @@ USAGE:
 scanner = new PlaceholderShiv({placeholderColor:"#999",includeTypes:[...]})
 
 ARGUMENTS[optional]:
+NOTE: If you pass any argument the native placeholder functionality
+will be overridden and JavaScript will be used in addition to 
+native placeholder text
+
 * placeholderColor(color[string]) * 
 A color for the placeholder text
 Default: #999
@@ -32,6 +36,7 @@ class window.PlaceholderShiv
 	Construtor
 	###
 	constructor: (args) ->
+		@overrideNative = no
 		###
 		If missing or not valid input, use the default set of input types
 		###
@@ -42,12 +47,14 @@ class window.PlaceholderShiv
 			Make sure all input types are in lowercase format
 			###
 			@includeTypes = args.includeTypes.map (item) -> item.toLowerCase()
+			@overrideNative = yes
 
 		###
 		If no color is passed, use the default #999
 		###
 		if args?
 			@placeholderColor = args.placeholderColor ? "#999"
+			@overrideNative = yes
 		else
 			@placeholderColor = "#999"
 			
@@ -61,7 +68,7 @@ class window.PlaceholderShiv
 		Do we have native placeholder support?
 		###
 		@nativeSupport = no
-		if @placeholderSupport
+		if @placeholderSupport and not @overrideNative
 			@nativeSupport = yes
 		
 		@setup()

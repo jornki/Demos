@@ -18,6 +18,10 @@ USAGE:
 scanner = new PlaceholderShiv({placeholderColor:"#999",includeTypes:[...]})
 
 ARGUMENTS[optional]:
+NOTE: If you pass any argument the native placeholder functionality
+will be overridden and JavaScript will be used in addition to 
+native placeholder text
+
 * placeholderColor(color[string]) * 
 A color for the placeholder text
 Default: #999
@@ -40,10 +44,11 @@ default elements: ['text','email','tel','search','url']
     function PlaceholderShiv(args) {
       this.blurHandler = __bind(this.blurHandler, this);
       this.focusHandler = __bind(this.focusHandler, this);
+      var _ref;
+      this.overrideNative = false;
       /*
       		If missing or not valid input, use the default set of input types
       */
-      var _ref;
       if (!(args != null) || !(args.includeTypes != null) || (typeof args.includeTypes === 'object' && args.includeTypes.length === 0) || (typeof args.includeTypes !== 'object')) {
         this.includeTypes = ['text', 'email', 'tel', 'search', 'url'];
       } else {
@@ -53,12 +58,14 @@ default elements: ['text','email','tel','search','url']
         this.includeTypes = args.includeTypes.map(function(item) {
           return item.toLowerCase();
         });
+        this.overrideNative = true;
       }
       /*
       		If no color is passed, use the default #999
       */
       if (args != null) {
         this.placeholderColor = (_ref = args.placeholderColor) != null ? _ref : "#999";
+        this.overrideNative = true;
       } else {
         this.placeholderColor = "#999";
       }
@@ -70,7 +77,9 @@ default elements: ['text','email','tel','search','url']
       		Do we have native placeholder support?
       */
       this.nativeSupport = false;
-      if (this.placeholderSupport) this.nativeSupport = true;
+      if (this.placeholderSupport && !this.overrideNative) {
+        this.nativeSupport = true;
+      }
       this.setup();
     }
 
