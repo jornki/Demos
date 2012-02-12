@@ -1,5 +1,6 @@
 (function(){
-
+    "use strict";
+    
     $(function(){
     	$('#jsShiv').on('click', jsShivHandler);
     	$('#jqShiv').on('click', jqShivHandler);
