@@ -29,6 +29,7 @@ default elements: ['text','email','tel','search','url']
 */
 
 (function() {
+  "use strict";
   var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
     __indexOf = Array.prototype.indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
 
@@ -90,8 +91,8 @@ default elements: ['text','email','tel','search','url']
           item.setAttribute('placeholder', item.placeholderText);
           item.defaultColor = this.getStyle(item, 'color');
           item.style.color = this.placeholderColor;
-          item.addEventListener('focus', this.focusHandler);
-          item.addEventListener('blur', this.blurHandler);
+          item.addEventListener('focus', this.focusHandler, false);
+          item.addEventListener('blur', this.blurHandler, false);
         }
       }
       return true;

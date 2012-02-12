@@ -14,6 +14,7 @@ $('input').setupPlaceholderShiv();
 
 */
 (function($) {
+	"use strict"
 	$.fn.setupPlaceholderShiv = function() {
 	  	var plColor, includeTypes;
 	    plColor = "#999";

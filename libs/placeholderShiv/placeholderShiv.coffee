@@ -26,6 +26,7 @@ An array of input elements e.g ['text','email']
 Note: Only specify this if you do not want the default set of elements.
 default elements: ['text','email','tel','search','url']
 ###
+"use strict"
 class window.PlaceholderShiv
 	###
 	Construtor
@@ -78,8 +79,8 @@ class window.PlaceholderShiv
 				item.setAttribute('placeholder',item.placeholderText)
 				item.defaultColor = @getStyle item, 'color'
 				item.style.color = @placeholderColor
-				item.addEventListener('focus', @focusHandler)
-				item.addEventListener('blur', @blurHandler)
+				item.addEventListener('focus', @focusHandler, no)
+				item.addEventListener('blur', @blurHandler, no)
 		return yes
 	
 	###
