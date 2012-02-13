@@ -41,7 +41,6 @@ $('input').setupPlaceholderShiv();
 						}
 					});
 				}else{
-					alert('native');
 					elem.val('');
 				}
 	    	}
