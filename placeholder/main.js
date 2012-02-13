@@ -11,8 +11,8 @@
     	var start, pls;
         start = new Date().getTime();
     	
-    	pls = new PlaceholderShiv({placeholderColor:"#F3C",includeTypes:['search','url']});
-    	//pls = new PlaceholderShiv();
+    	//pls = new PlaceholderShiv({placeholderColor:"#F3C",includeTypes:['search','url']});
+    	pls = new PlaceholderShiv();
     	
     	$('#out').html((new Date().getTime() - start) + " ms");
     }
