@@ -17,13 +17,13 @@ $('input').setupPlaceholderShiv();
 	"use strict"
 	$.fn.setupPlaceholderShiv = function() {
 	  	var plColor, includeTypes;
-	    plColor = "#999";
+	    plColor = "#999";//ttt
 	    
 	    return this.each(function(index, element){
 	    	var elem = $(element);
 	    	if(elem.is('input')){
 	    		elem.attr('placeholder',elem.val());
-	    		if(!'placeholder' in element){
+	    		if(!('placeholder' in document.createElement('input'))){
 		    		element.defaultColor = elem.css('color');
 					element.placeholderText = elem.val();
 					elem.css('color',plColor);
@@ -41,6 +41,7 @@ $('input').setupPlaceholderShiv();
 						}
 					});
 				}else{
+					alert('native');
 					elem.val('');
 				}
 	    	}
