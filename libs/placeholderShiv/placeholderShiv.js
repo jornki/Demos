@@ -44,7 +44,12 @@ default elements: ['text','email','tel','search','url']
     function PlaceholderShiv(args) {
       this.blurHandler = __bind(this.blurHandler, this);
       this.focusHandler = __bind(this.focusHandler, this);
-      var _ref;
+      var item, _ref;
+      if (!document.addEventListener) {
+        alert("This browser is not supported, use the jQuery plugin");
+        throw "This browser is not supported, use the jQuery plugin!";
+        return false;
+      }
       this.overrideNative = false;
       /*
       		If missing or not valid input, use the default set of input types
@@ -55,9 +60,16 @@ default elements: ['text','email','tel','search','url']
         /*
         			Make sure all input types are in lowercase format
         */
-        this.includeTypes = args.includeTypes.map(function(item) {
-          return item.toLowerCase();
-        });
+        this.includeTypes = (function() {
+          var _i, _len, _ref, _results;
+          _ref = args.includeTypes;
+          _results = [];
+          for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+            item = _ref[_i];
+            _results.push(item.toLowerCase());
+          }
+          return _results;
+        })();
         this.overrideNative = true;
       }
       /*
@@ -65,7 +77,7 @@ default elements: ['text','email','tel','search','url']
       */
       if (args != null) {
         this.placeholderColor = (_ref = args.placeholderColor) != null ? _ref : "#999";
-        this.overrideNative = true;
+        this.overrideNative = args.placeholderColor != null;
       } else {
         this.placeholderColor = "#999";
       }
@@ -77,7 +89,7 @@ default elements: ['text','email','tel','search','url']
       		Do we have native placeholder support?
       */
       this.nativeSupport = false;
-      if (this.placeholderSupport && !this.overrideNative) {
+      if (this.placeholderSupport() && !this.overrideNative) {
         this.nativeSupport = true;
       }
       this.setup();

@@ -36,6 +36,11 @@ class window.PlaceholderShiv
 	Construtor
 	###
 	constructor: (args) ->
+		if not document.addEventListener
+			alert "This browser is not supported, use the jQuery plugin"
+			throw "This browser is not supported, use the jQuery plugin!"
+			return no
+
 		@overrideNative = no
 		###
 		If missing or not valid input, use the default set of input types
@@ -46,7 +51,7 @@ class window.PlaceholderShiv
 			###
 			Make sure all input types are in lowercase format
 			###
-			@includeTypes = args.includeTypes.map (item) -> item.toLowerCase()
+			@includeTypes = (item.toLowerCase() for item in args.includeTypes)
 			@overrideNative = yes
 
 		###
@@ -54,7 +59,7 @@ class window.PlaceholderShiv
 		###
 		if args?
 			@placeholderColor = args.placeholderColor ? "#999"
-			@overrideNative = yes
+			@overrideNative = args.placeholderColor?
 		else
 			@placeholderColor = "#999"
 			
@@ -68,7 +73,7 @@ class window.PlaceholderShiv
 		Do we have native placeholder support?
 		###
 		@nativeSupport = no
-		if @placeholderSupport and not @overrideNative
+		if @placeholderSupport() and not @overrideNative
 			@nativeSupport = yes
 		
 		@setup()
@@ -86,7 +91,7 @@ class window.PlaceholderShiv
 			###
 			if not item.value? or item.value is ""
 				continue
-			
+
 			itemType = item.getAttribute('type').toLowerCase()
 			if itemType in @includeTypes
 				item.setAttribute('placeholder',item.value)
