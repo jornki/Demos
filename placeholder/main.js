@@ -8,16 +8,18 @@
 
     function jsShivHandler(e)
     {
-    	var start = new Date().getTime();
+    	var start, pls;
+        start = new Date().getTime();
     	
-    	//var pls = new PlaceholderShiv({placeholderColor:"#F3C",includeTypes:['search','url']});
-    	var pls = new PlaceholderShiv();
+    	pls = new PlaceholderShiv({placeholderColor:"#F3C",includeTypes:['search','url']});
+    	//pls = new PlaceholderShiv();
     	
     	$('#out').html((new Date().getTime() - start) + " ms");
     }
     function jqShivHandler(e)
     {
-    	var start = new Date().getTime();
+        var start;
+    	start = new Date().getTime();
     	
     	$('input').setupPlaceholderShiv();
     	
