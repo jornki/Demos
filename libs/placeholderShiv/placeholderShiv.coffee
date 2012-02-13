@@ -129,7 +129,7 @@ class window.PlaceholderShiv
 	Method for checking for native placeholder support
 	###
 	placeholderSupport: () ->
-		("placeholder" in document.createElement("input"))
+		("placeholder" of document.createElement("input"))
 
 	### 
 	Helper method to get the computed style 

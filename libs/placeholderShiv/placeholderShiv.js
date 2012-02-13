@@ -161,7 +161,7 @@ default elements: ['text','email','tel','search','url']
     */
 
     PlaceholderShiv.prototype.placeholderSupport = function() {
-      return __indexOf.call(document.createElement("input"), "placeholder") >= 0;
+      return "placeholder" in document.createElement("input");
     };
 
     /* 
