@@ -25,6 +25,10 @@
 
     init = function()
     {
+        if(!("ontouchstart" in window)){
+            alert("Your browser is not touch enabled");
+            return false;
+        }
     	var regDiv,jqDiv;
 
 	    regDiv = document.getElementById('aDiv');
