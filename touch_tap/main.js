@@ -12,25 +12,29 @@
     		//do awesome stuff
     		if(e.originalEvent){
     			//It's a jquery event
-    			$(output).html("Tap fired from jqPlugin on " + e.target);
+    			$(output).html("Tap fired from jqPlugin on " + "\"" + $(e.target).attr('id') + "\"");
     		}else{
     			//It's a standard event
-    			output.innerHTML = "Tap fired from js lib on " + e.target;
+    			output.innerHTML = "Tap fired from js lib on " + "\"" + e.target.getAttribute('id') + "\"";
     		}
     	}
+        setTimeout(function(){
+            return output.innerHTML = 'Reset';
+        }, 2000);
     }
 
     init = function()
     {
-    	var div,link;
+    	var regDiv,jqDiv;
 
-	    div = document.getElementById('aDiv');
-	    link = document.getElementById('aLink');
+	    regDiv = document.getElementById('aDiv');
+	    jqDiv  = $('#jqDiv');
 	    output = document.getElementById('out');
 
-	    div.tap(tapEventHandler);
-	    link.tap(tapEventHandler);
-	    //$(div).tap(tapEventHandler);
+	    regDiv.tap(tapEventHandler);
+        jqDiv.tap(tapEventHandler);
+
+        return false;
     }
 
     if(document.addEventListener){
