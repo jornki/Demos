@@ -49,7 +49,7 @@ See the example above for how to do this.
 		}
 
 		var version, didMove, tapCancelTime, startTime, endTime, _bind;
-		version = "1.0.0";
+		version = "1.0.1";
     	tapCancelTime = 2 * 1000;
 		_bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 		
