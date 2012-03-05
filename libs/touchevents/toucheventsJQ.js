@@ -43,11 +43,6 @@ See the example above for how to do this.
 (function($) {
 	"use strict"
 	$.fn.tap = function(callback) {
-		if(!("ontouchstart" in window)){
-			throw "Tap only works on touch devices";
-    		return this;
-		}
-
 		var version, didMove, tapCancelTime, startTime, endTime, _bind;
 		version = "1.0.1";
     	tapCancelTime = 2 * 1000;

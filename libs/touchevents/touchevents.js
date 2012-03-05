@@ -43,11 +43,6 @@ See the example above for how to do this.
 
     Object.prototype.tap = function(callback)
     {
-    	if(!this.addEventListener || !("ontouchstart" in window)){
-    		throw "Tap only works on touch devices";
-    		return false;
-    	}
-
     	var version, didMove, tapCancelTime, startTime, endTime, _bind;
 
     	version = "1.0.1";
