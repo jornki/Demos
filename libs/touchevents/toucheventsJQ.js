@@ -51,6 +51,10 @@ See the example above for how to do this.
 	  	return this.each(function(index, element){
 	  		var elem = $(element);
 
+	  		elem.on('click', function(e){
+	  			e.preventDefault();
+	  		});
+
 	  		elem.on('touchstart', _bind(function(e){
 	  			didMove = false;
 	  			startTime = new Date().getTime();
