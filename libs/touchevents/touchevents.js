@@ -49,7 +49,10 @@ See the example above for how to do this.
     	tapCancelTime = 2 * 1000;
     	_bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
-    	this.addEventListener('touchstart',_bind(function(e){
+    	this.addEventListener('click', function(e){
+            e.preventDefault()
+        });
+        this.addEventListener('touchstart',_bind(function(e){
     		startTime = new Date().getTime();
     		didMove = false;
     	}, this));
